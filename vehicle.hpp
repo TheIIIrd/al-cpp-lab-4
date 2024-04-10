@@ -64,9 +64,9 @@ inline bool operator<(const Vehicle &_LTMP, const Vehicle &_RTMP) {
          _RTMP._FUEL[2]; // Сравнение по смешанному расходу топлива
 }
 
-inline bool operator>(const Vehicle &l_TMP, const Vehicle &r_TMP) {
-  return l_TMP._FUEL[2] >
-         r_TMP._FUEL[2]; // Сравнение по смешанному расходу топлива
+inline bool operator>(const Vehicle &_LTMP, const Vehicle &_RTMP) {
+  return _LTMP._FUEL[2] >
+         _RTMP._FUEL[2]; // Сравнение по смешанному расходу топлива
 }
 
 #endif
