@@ -30,59 +30,66 @@ std::copy. А также сортировку объектов в исходно
 
 #include "vehicle.hpp" // Подключение заголовочного файла с описанием класса Vehicle
 #include <algorithm>
-#include <deque>
 #include <fstream>
 #include <vector>
+#include <deque>
 
 template <class T> void CustomOutput(T &_TMP) {
-  std::ofstream output("output.txt",
-                       std::ios::app); // Открытие файла для записи
+  // Открытие файла для записи
+  std::ofstream output("output.txt", std::ios::app);
 
   output << _TMP << std::endl;    // Запись объекта в файл
   std::cout << _TMP << std::endl; // Вывод объекта на консоль
 
-  output.close(); // Закрытие файла
+  // Закрытие файла
+  output.close();
 }
 
 int main() {
   std::ofstream clear("output.txt"); // Очистка файла вывода
-  clear.close();                     // Закрытие файла
+  clear.close(); // Закрытие файла
 
   std::ifstream input("input.txt"); // Открытие файла для чтения
 
   std::vector<Vehicle> _TEST; // Создание вектора объектов класса Vehicle
 
   for (size_t i = 0; i < 5; ++i) {
-    Vehicle _TMP; // Создание временного объекта Vehicle
-    input >> _TMP; // Чтение данных из файла и инициализация объекта
+    Vehicle _TMP;             // Создание временного объекта Vehicle
+    input >> _TMP;            // Чтение данных из файла и инициализация объекта
     _TEST.push_back(_TMP); // Добавление объекта в конец вектора
   }
 
-  CustomOutput(
-      "[+] List before Sorting: "); // Вывод заголовка списка перед сортировкой
-  for (const auto &_EL : _TEST) {
-    CustomOutput(_EL); // Вывод каждого элемента из вектора
-  }
+  // Вывод заголовка списка перед сортировкой
+  CustomOutput("[+] List before Sorting: ");
 
-  CustomOutput(
-      "[+] List after Sorting: "); // Вывод заголовка списка после сортировки
-  std::sort(_TEST.begin(), _TEST.end()); // Сортировка элементов вектора
+  // Вывод каждого элемента из вектора
+  for (const auto &_EL : _TEST)
+    CustomOutput(_EL);
 
-  for (auto _EL : _TEST) {
-    CustomOutput(_EL); // Вывод отсортированных элементов
-  }
+  // Вывод заголовка списка после сортировки
+  CustomOutput("[+] List after Sorting: ");
 
-  CustomOutput("[+] Vector copied from List: "); // Вывод заголовка для
-                                                 // скопированного вектора
-  std::deque<Vehicle> _RES; // Создание двусвязного списка объектов Vehicle
+  // Сортировка элементов вектора
+  std::sort(_TEST.begin(), _TEST.end());
 
+  // Вывод отсортированных элементов
+  for (auto _EL : _TEST)
+    CustomOutput(_EL);
+
+  // Вывод заголовка для скопированного вектора
+  CustomOutput("[+] Vector copied from List: ");
+
+  // Создание двусвязного списка объектов Vehicle
+  std::deque<Vehicle> _RES;
+
+  // Копирование элементов из вектора в список
   std::copy(
       _TEST.begin(), _TEST.end(),
-      std::back_inserter(_RES)); // Копирование элементов из вектора в список
+      std::back_inserter(_RES));
 
-  for (const auto &_EL : _RES) {
-    CustomOutput(_EL); // Вывод каждого элемента из скопированного списка
-  }
+  // Вывод каждого элемента из скопированного списка
+  for (const auto &_EL : _RES)
+    CustomOutput(_EL);
 
   return 0;
 }

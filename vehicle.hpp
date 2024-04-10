@@ -10,9 +10,9 @@ class Vehicle {
   friend bool operator>(const Vehicle &, const Vehicle &);
 
 private:
-  std::string _MODEL; // Название модели автомобиля
-  double _FUEL[3]; // Расход топлива на трассе, в городе и смешанный
-  size_t _SPEED;   // Максимальная скорость
+  std::string _MODEL;   // Название модели автомобиля
+  double _FUEL[3];      // Расход топлива на трассе, в городе и смешанный
+  size_t _SPEED;        // Максимальная скорость
   double _ENGINE_POWER; // Мощность двигателя
 
 public:
@@ -36,20 +36,17 @@ inline Vehicle::Vehicle(const Vehicle &_TMP)
 
 inline std::ostream &operator<<(std::ostream &os, const Vehicle &_TMP) {
   os << "Model: " << _TMP._MODEL << std::endl;
-
   os << "Fuel consumption" << std::endl
      << "highway: " << _TMP._FUEL[0] << " city: " << _TMP._FUEL[1]
      << " mixed: " << _TMP._FUEL[2] << std::endl;
-
   os << "Max speed: " << _TMP._SPEED << std::endl;
-
   os << "Engine power: " << _TMP._ENGINE_POWER << std::endl;
 
   return os;
 }
 
 inline std::istream &operator>>(std::istream &is, Vehicle &_TMP) {
-  is >> std::ws;
+  is >> std::ws; // очищаем буфер потока от лишних пробельных символов
 
   std::getline(is, _TMP._MODEL);
 
