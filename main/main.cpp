@@ -28,7 +28,7 @@ std::copy. А также сортировку объектов в исходно
 + Исходный контейнер vector, копируем в deque
 */
 
-#include "vehicle.hpp" // Подключение заголовочного файла с описанием класса Vehicle
+#include "../vehicle/vehicle.hpp" // Подключение заголовочного файла с описанием класса Vehicle
 #include <algorithm>
 #include <fstream>
 #include <vector>
@@ -36,7 +36,7 @@ std::copy. А также сортировку объектов в исходно
 
 template <class T> void CustomOutput(T &_TMP) {
   // Открытие файла для записи
-  std::ofstream output("output.txt", std::ios::app);
+  std::ofstream output("../stream/output.txt", std::ios::app);
 
   output << _TMP << std::endl;    // Запись объекта в файл
   std::cout << _TMP << std::endl; // Вывод объекта на консоль
@@ -46,10 +46,10 @@ template <class T> void CustomOutput(T &_TMP) {
 }
 
 int main() {
-  std::ofstream clear("output.txt"); // Очистка файла вывода
+  std::ofstream clear("../stream/output.txt"); // Очистка файла вывода
   clear.close(); // Закрытие файла
 
-  std::ifstream input("input.txt"); // Открытие файла для чтения
+  std::ifstream input("../stream/input.txt"); // Открытие файла для чтения
 
   std::vector<Vehicle> _TEST; // Создание вектора объектов класса Vehicle
 
